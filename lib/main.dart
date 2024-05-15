@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:health_app/screens/home_screen.dart';
-import 'package:health_app/shared_theme/app_theme.dart';
+import 'shared/theme/app_theme.dart';
 
 void main() {
-  runApp(const HomeScreen());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
