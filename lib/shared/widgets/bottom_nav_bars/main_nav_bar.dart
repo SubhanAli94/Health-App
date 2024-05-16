@@ -16,6 +16,17 @@ class MainNavBar extends StatelessWidget {
       selectedFontSize: 14,
       selectedLabelStyle: textTheme.bodySmall,
       unselectedLabelStyle: textTheme.bodySmall,
+      type: BottomNavigationBarType.fixed,
+      onTap: (index) {
+        switch (index) {
+          case 0:
+          case 1:
+          case 2:
+          case 3:
+          case 4:
+          default:
+        }
+      },
       items: const [
         BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Discover'),
         BottomNavigationBarItem(

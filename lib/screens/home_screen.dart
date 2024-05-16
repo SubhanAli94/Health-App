@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_launcher_icons/xml_templates.dart';
 import 'package:health_app/shared/widgets/avatars/circle_avatar_with_text_label.dart';
 import 'package:health_app/shared/widgets/list_tiles/doctor_list_tile.dart';
@@ -9,6 +10,7 @@ import 'package:models/models.dart';
 
 import '../shared/widgets/bottom_nav_bars/main_nav_bar.dart';
 import '../shared/widgets/cards/appointment_preview_card.dart';
+import '../state/home/home_bloc.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -102,21 +104,36 @@ class HomeView extends StatelessWidget {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              _DoctorCategories(),
-              const SizedBox(height: 10),
-              _MySchedule(),
-              const SizedBox(height: 24),
-              _NearbyDoctors(),
-            ],
-          ),
-        ),
+      body: BlocBuilder<HomeBloc, HomeState>(
+        builder: (context, state) {
+          if (state.status == HomeStatus.initial ||
+              state.status == HomeStatus.loading) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+
+          if (state.status == HomeStatus.error) {
+            return const Center(child: Text('Something went wrong'));
+          }
+
+          return const SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  _DoctorCategories(),
+                  SizedBox(height: 10),
+                  _MySchedule(),
+                  SizedBox(height: 24),
+                  _NearbyDoctors(),
+                ],
+              ),
+            ),
+          );
+        },
       ),
-      bottomNavigationBar: MainNavBar(),
+      bottomNavigationBar: const MainNavBar(),
     );
   }
 }
@@ -126,35 +143,39 @@ class _DoctorCategories extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        ///Title
-        SectionTitles(
-          text: 'Categories',
-          action: 'See All',
-        ),
+    return BlocBuilder<HomeBloc, HomeState>(
+      builder: (context, state) {
+        return Column(
+          children: [
+            ///Title
+            SectionTitles(
+              text: 'Categories',
+              action: 'See All',
+            ),
 
-        Container(
-          constraints: const BoxConstraints(maxHeight: 85),
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: DoctorCategory.values.length,
-            itemExtent: 90,
-            itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                child: CircleAvatarWithTextLabel(
-                    icon: DoctorCategory.values[index].icon,
-                    label: DoctorCategory.values[index].name,
-                    onTap: () {}),
-              );
-            },
-          ),
-        )
+            Container(
+              constraints: const BoxConstraints(maxHeight: 85),
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: state.doctorCategories.length,
+                itemExtent: 90,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                    child: CircleAvatarWithTextLabel(
+                        icon: state.doctorCategories[index].icon,
+                        label: state.doctorCategories[index].name,
+                        onTap: () {}),
+                  );
+                },
+              ),
+            )
 
-        ///
-        /// Icons
-      ],
+            ///
+            /// Icons
+          ],
+        );
+      },
     );
   }
 }
@@ -164,14 +185,18 @@ class _MySchedule extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
-      SectionTitles(
-        text: 'My Schedules',
-        action: 'See All',
-        onPressed: () {},
-      ),
-      AppointmentPreviewCard()
-    ]);
+    return BlocBuilder<HomeBloc, HomeState>(
+      builder: (context, state) {
+        return Column(children: [
+          SectionTitles(
+            text: 'My Schedules',
+            action: 'See All',
+            onPressed: () {},
+          ),
+          AppointmentPreviewCard(appointment: state.myAppointments.firstOrNull)
+        ]);
+      },
+    );
   }
 }
 
@@ -182,25 +207,28 @@ class _NearbyDoctors extends StatelessWidget {
   Widget build(BuildContext context) {
     final colorTheme = Theme.of(context).colorScheme;
 
-    return Column(children: [
-      SectionTitles(
-        text: 'Nearby Doctors',
-        action: 'See All',
-        onPressed: () {},
-      ),
-      ListView.separated(
-        physics: const NeverScrollableScrollPhysics(),
-        shrinkWrap: true,
-        itemCount: Doctor.sampleDoctors.length,
-        separatorBuilder: (context, index) => Divider(
-          height: 24.0,
-          color: colorTheme.surfaceContainerHighest,
-        ),
-        itemBuilder: (context, index) {
-          var doctor = Doctor.sampleDoctors[index];
-          return DoctorListTile(doctor: doctor);
-        },
-      )
-    ]);
+    return BlocBuilder<HomeBloc, HomeState>(
+      builder: (context, state) {
+        return Column(children: [
+          SectionTitles(
+            text: 'Nearby Doctors',
+            action: 'See All',
+            onPressed: () {},
+          ),
+          ListView.separated(
+            physics: const NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            itemCount: state.nearbyDoctors.length,
+            separatorBuilder: (context, index) => Divider(
+              height: 24.0,
+              color: colorTheme.surfaceContainerHighest,
+            ),
+            itemBuilder: (context, index) {
+              return DoctorListTile(doctor: state.nearbyDoctors[index]);
+            },
+          )
+        ]);
+      },
+    );
   }
 }
