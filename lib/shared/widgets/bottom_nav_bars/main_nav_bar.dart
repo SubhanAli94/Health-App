@@ -13,6 +13,9 @@ class MainNavBar extends StatelessWidget {
       unselectedItemColor: colorTheme.onSurface.withOpacity(0.5),
       showSelectedLabels: true,
       showUnselectedLabels: true,
+      selectedFontSize: 14,
+      selectedLabelStyle: textTheme.bodySmall,
+      unselectedLabelStyle: textTheme.bodySmall,
       items: const [
         BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Discover'),
         BottomNavigationBarItem(
