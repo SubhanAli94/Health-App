@@ -6,6 +6,8 @@ import 'package:health_app/shared/widgets/avatars/circle_avatar_with_text_label.
 import 'package:health_app/shared/widgets/titles/section_titles.dart';
 import 'package:models/models.dart';
 
+import '../shared/widgets/cards/appointment_preview_card.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -27,7 +29,7 @@ class HomeView extends StatelessWidget {
     /// Create the HomeView UI
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: colorTheme.primary.withOpacity(0.1),
+          backgroundColor: colorTheme.primary.withOpacity(0.15),
           toolbarHeight: 80,
           title: Container(
             child: Column(
@@ -84,7 +86,7 @@ class HomeView extends StatelessWidget {
                   prefixIcon: const Icon(Icons.search),
                   suffixIcon: Container(
                     decoration: BoxDecoration(
-                      color: colorTheme.onSurfaceVariant,
+                      color: colorTheme.primary,
                       borderRadius: BorderRadius.circular(8.0),
                     ),
                     padding: const EdgeInsets.all(4),
@@ -103,7 +105,13 @@ class HomeView extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.all(8.0),
             child: Column(
-              children: [_DoctorCategories()],
+              children: [
+                _DoctorCategories(),
+                const SizedBox(height: 10),
+                _MySchedule(),
+                const SizedBox(height: 24),
+                _NearbyDoctors(),
+              ],
             ),
           ),
         ));
@@ -124,25 +132,58 @@ class _DoctorCategories extends StatelessWidget {
         ),
 
         Container(
-          height: 200,
+          constraints: const BoxConstraints(maxHeight: 85),
           child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: DoctorCategory.values.length,
-              itemExtent: 90,
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                  child: CircleAvatarWithTextLabel(
-                      icon: DoctorCategory.values[index].icon,
-                      label: DoctorCategory.values[index].name,
-                      onTap: () {}),
-                );
-              }),
+            scrollDirection: Axis.horizontal,
+            itemCount: DoctorCategory.values.length,
+            itemExtent: 90,
+            itemBuilder: (context, index) {
+              return Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                child: CircleAvatarWithTextLabel(
+                    icon: DoctorCategory.values[index].icon,
+                    label: DoctorCategory.values[index].name,
+                    onTap: () {}),
+              );
+            },
+          ),
         )
 
         ///
         /// Icons
       ],
     );
+  }
+}
+
+class _MySchedule extends StatelessWidget {
+  const _MySchedule({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(children: [
+      SectionTitles(
+        text: 'My Schedules',
+        action: 'See All',
+        onPressed: () {},
+      ),
+      AppointmentPreviewCard()
+    ]);
+  }
+}
+
+class _NearbyDoctors extends StatelessWidget {
+  const _NearbyDoctors({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(children: [
+      SectionTitles(
+        text: 'Nearby Doctors',
+        action: 'See All',
+        onPressed: () {},
+      ),
+      AppointmentPreviewCard()
+    ]);
   }
 }
