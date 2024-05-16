@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_launcher_icons/xml_templates.dart';
 import 'package:health_app/shared/widgets/avatars/circle_avatar_with_text_label.dart';
+import 'package:health_app/shared/widgets/list_tiles/doctor_list_tile.dart';
 import 'package:health_app/shared/widgets/titles/section_titles.dart';
 import 'package:models/models.dart';
 
+import '../shared/widgets/bottom_nav_bars/main_nav_bar.dart';
 import '../shared/widgets/cards/appointment_preview_card.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -28,93 +30,94 @@ class HomeView extends StatelessWidget {
 
     /// Create the HomeView UI
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: colorTheme.primary.withOpacity(0.15),
-          toolbarHeight: 80,
-          title: Container(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Welcome',
-                  style: textTheme.bodyMedium,
-                ),
-                Text(
-                  'Subhan Ali',
-                  style: textTheme.bodyLarge!
-                      .copyWith(fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 4),
-                Row(
-                  children: [
-                    Icon(
-                      Icons.location_on_outlined,
-                      color: colorTheme.primary,
-                      size: 20,
-                    ),
-                    const SizedBox(height: 2),
-                    Text(
-                      'Dubai, UAE',
-                      style: textTheme.bodyMedium,
-                    ),
-                    const SizedBox(height: 2),
-                    Icon(
-                      Icons.expand_more,
-                      color: colorTheme.primary,
-                    ),
-                  ],
-                ),
-              ],
-            ),
+      appBar: AppBar(
+        backgroundColor: colorTheme.primary.withOpacity(0.15),
+        toolbarHeight: 80,
+        title: Container(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Welcome',
+                style: textTheme.bodyMedium,
+              ),
+              Text(
+                'Subhan Ali',
+                style:
+                    textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 4),
+              Row(
+                children: [
+                  Icon(
+                    Icons.location_on_outlined,
+                    color: colorTheme.primary,
+                    size: 20,
+                  ),
+                  const SizedBox(height: 2),
+                  Text(
+                    'Dubai, UAE',
+                    style: textTheme.bodyMedium,
+                  ),
+                  const SizedBox(height: 2),
+                  Icon(
+                    Icons.expand_more,
+                    color: colorTheme.primary,
+                  ),
+                ],
+              ),
+            ],
           ),
-          actions: [
-            IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.notifications_outlined)),
-            const SizedBox(
-              width: 8,
-            )
-          ],
-          bottom: PreferredSize(
-            preferredSize: const Size.fromHeight(64),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: TextFormField(
-                decoration: InputDecoration(
-                  hintText: 'Search for doctors...',
-                  prefixIcon: const Icon(Icons.search),
-                  suffixIcon: Container(
-                    decoration: BoxDecoration(
-                      color: colorTheme.primary,
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
-                    padding: const EdgeInsets.all(4),
-                    margin: const EdgeInsets.all(4),
-                    child: Icon(
-                      Icons.filter_alt_outlined,
-                      color: colorTheme.surfaceContainerHighest,
-                    ),
+        ),
+        actions: [
+          IconButton(
+              onPressed: () {}, icon: const Icon(Icons.notifications_outlined)),
+          const SizedBox(
+            width: 8,
+          )
+        ],
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(64),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextFormField(
+              decoration: InputDecoration(
+                hintText: 'Search for doctors...',
+                prefixIcon: const Icon(Icons.search),
+                suffixIcon: Container(
+                  decoration: BoxDecoration(
+                    color: colorTheme.primary,
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  padding: const EdgeInsets.all(4),
+                  margin: const EdgeInsets.all(4),
+                  child: Icon(
+                    Icons.filter_alt_outlined,
+                    color: colorTheme.surfaceContainerHighest,
                   ),
                 ),
               ),
             ),
           ),
         ),
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Column(
-              children: [
-                _DoctorCategories(),
-                const SizedBox(height: 10),
-                _MySchedule(),
-                const SizedBox(height: 24),
-                _NearbyDoctors(),
-              ],
-            ),
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              _DoctorCategories(),
+              const SizedBox(height: 10),
+              _MySchedule(),
+              const SizedBox(height: 24),
+              _NearbyDoctors(),
+            ],
           ),
-        ));
+        ),
+      ),
+      bottomNavigationBar: MainNavBar(),
+    );
   }
 }
 
@@ -177,13 +180,27 @@ class _NearbyDoctors extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorTheme = Theme.of(context).colorScheme;
+
     return Column(children: [
       SectionTitles(
         text: 'Nearby Doctors',
         action: 'See All',
         onPressed: () {},
       ),
-      AppointmentPreviewCard()
+      ListView.separated(
+        physics: const NeverScrollableScrollPhysics(),
+        shrinkWrap: true,
+        itemCount: Doctor.sampleDoctors.length,
+        separatorBuilder: (context, index) => Divider(
+          height: 24.0,
+          color: colorTheme.surfaceContainerHighest,
+        ),
+        itemBuilder: (context, index) {
+          var doctor = Doctor.sampleDoctors[index];
+          return DoctorListTile(doctor: doctor);
+        },
+      )
     ]);
   }
 }
