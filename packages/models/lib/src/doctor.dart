@@ -53,7 +53,8 @@ class Doctor extends Equatable {
     Doctor(
       id: 1,
       name: 'Dr. John Doe',
-      bio: 'Experienced Cardiologist with over 20 years in the field.',
+      bio:
+          'Dr. John Doe is a compassionate psychiatrist focusing on adolescent mental health and trauma recovery. She earned her medical degree from Yale School of Medicine and completed her residency at the University of Michigan. Dr. Khan is acclaimed for her therapeutic approach combining medication management with cognitive-behavioral therapy. She actively participates in mental health awareness campaigns and community outreach programs. Dr. Khan is also an avid reader and enjoys writing poetry.',
       profileImageUrl:
           'https://assets-global.website-files.com/5e51c674258ffe10d286d30a/5e535c97550b761e38f7f4cd_peep-94.png',
       category: DoctorCategory.cardiology,
@@ -70,7 +71,8 @@ class Doctor extends Equatable {
     Doctor(
       id: 2,
       name: 'Dr. Jane Smith',
-      bio: 'Leading Dermatologist specializing in skin conditions.',
+      bio:
+          'Dr. Jane Smith specializes in pediatric care with over 15 years of experience. She is known for her gentle approach with children and her ability to ease parental concerns. Dr. Carter holds a degree from Johns Hopkins University and completed her residency at Boston Children’s Hospital. She is also an advocate for child nutrition and wellness. In her free time, she volunteers at local schools to promote health education.',
       profileImageUrl:
           'https://assets-global.website-files.com/5e51c674258ffe10d286d30a/5e535d897488c25a204b12ff_peep-102.png',
       category: DoctorCategory.dermatology,
@@ -87,7 +89,8 @@ class Doctor extends Equatable {
     Doctor(
       id: 3,
       name: 'Dr. Alan Brown',
-      bio: 'Renowned Anesthesiologist with extensive experience.',
+      bio:
+          'Dr. Alan Brown is a renowned cardiologist with a focus on advanced heart disease treatment and prevention. He earned his medical degree from the University of California, San Francisco and completed his fellowship at the Cleveland Clinic. Dr. Mehta is highly regarded for his expertise in minimally invasive procedures. He has published numerous research papers and is actively involved in clinical trials. Outside of his practice, he enjoys hiking and playing classical guitar.',
       profileImageUrl:
           'https://assets-global.website-files.com/5e51c674258ffe10d286d30a/5e53595a7371bb55159fd9a2_peep-66.png',
       category: DoctorCategory.anesthesiology,
@@ -104,7 +107,8 @@ class Doctor extends Equatable {
     Doctor(
       id: 4,
       name: 'Dr. Emily White',
-      bio: 'Expert in Emergency Medicine with a passion for patient care.',
+      bio:
+          'Dr. Emily White is a board-certified dermatologist specializing in skin cancer treatment and cosmetic dermatology. She graduated from Harvard Medical School and completed her dermatology residency at Stanford University. Dr. Lin is recognized for her skill in laser treatments and Mohs surgery. She frequently lectures at international dermatology conferences and contributes to medical journals. Dr. Lin is also passionate about art and often incorporates it into her patient care approach.',
       profileImageUrl:
           'https://assets-global.website-files.com/5e51c674258ffe10d286d30a/5e535516c6b249395e2a3845_peep-34.png',
       category: DoctorCategory.emergencyMedicine,
@@ -121,7 +125,8 @@ class Doctor extends Equatable {
     Doctor(
       id: 5,
       name: 'Dr. Michael Green',
-      bio: 'Highly skilled Dentist with a focus on preventive care.',
+      bio:
+          'Dr. Michael Green is an orthopedic surgeon with a specialization in sports injuries and joint replacement. He received his medical training at Duke University and completed his orthopedic residency at the Mayo Clinic. Dr. O’Connor is known for his precision in arthroscopic surgery and his dedication to patient recovery. He serves as a team physician for several local sports teams and is an advocate for youth sports safety. In his leisure time, he enjoys cycling and coaching soccer.',
       profileImageUrl:
           'https://assets-global.website-files.com/5e51c674258ffe10d286d30a/5e535b5e8becbf0e0b545ab7_peep-83.png',
       category: DoctorCategory.dentist,

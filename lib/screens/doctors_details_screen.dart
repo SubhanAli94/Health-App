@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:health_app/shared/widgets/buttons/app_icon_button.dart';
+import 'package:models/models.dart';
+
+import '../shared/widgets/cards/doctor_card.dart';
 
 class DoctorsDetailsScreen extends StatelessWidget {
   const DoctorsDetailsScreen({super.key, required this.doctorId});
@@ -33,6 +36,14 @@ class DoctorsDetailsView extends StatelessWidget {
           style: textTheme.titleMedium!.copyWith(fontWeight: FontWeight.bold),
         ),
         actions: [AppIconButton(icon: Icons.favorite_outline, onTap: () {})],
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            DoctorCard(doctor: Doctor.sampleDoctors[0]),
+          ],
+        ),
       ),
     );
   }
