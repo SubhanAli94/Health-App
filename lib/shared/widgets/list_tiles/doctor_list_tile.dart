@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:health_app/screens/doctors_details_screen.dart';
 import 'package:models/src/doctor.dart';
 
 class DoctorListTile extends StatelessWidget {
@@ -15,7 +16,13 @@ class DoctorListTile extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
     final colorScheme = Theme.of(context).colorScheme;
     return ListTile(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => DoctorsDetailsScreen(doctorId: doctor.id)),
+        );
+      },
       contentPadding: EdgeInsets.zero,
       leading: Container(
         width: 50,

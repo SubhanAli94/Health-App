@@ -28,6 +28,7 @@ class MyApp extends StatelessWidget {
                 ..add(LoadHomeEvent())),
         ],
         child: MaterialApp(
+          debugShowCheckedModeBanner: false,
           theme: const AppTheme().themeData,
           home: const HomeScreen(),
         ),
