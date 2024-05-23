@@ -13,4 +13,4 @@ An app for finding doctors and booking appointments.
 <img alt="screenshot" src="https://github.com/SubhanAli94/Health-App/blob/main/screenshots/sc1.jpeg" width="25%" /> <img alt="screenshot" src="https://github.com/SubhanAli94/Health-App/blob/main/screenshots/sc2.jpeg" width="25%" />
 
 ## Learning Credit
-[Youtube](https://www.youtube.com/@MaxonFlutter)
+Max On Flutter: [Youtube](https://www.youtube.com/@MaxonFlutter)
