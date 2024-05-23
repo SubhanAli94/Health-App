@@ -11,8 +11,8 @@ An app for finding doctors and booking appointments.
 
 ## Screenshot
 <p align="center">
-  <img src="https://github.com/SubhanAli94/Health-App/screenshots/sc1.jpeg" alt="Sublime's custom image"/>
-  <img src="https://github.com/SubhanAli94/Health-App/screenshots/sc2.jpeg" alt="Sublime's custom image"/>
+  <img src="https://github.com/SubhanAli94/Health-App/blob/main/screenshots/sc1.jpeg" alt="Sublime's custom image"/>
+  <img src="https://github.com/SubhanAli94/Health-App/blob/main/screenshots/sc2.jpeg" alt="Sublime's custom image"/>
 </p>
 
 ## Learning Credit
