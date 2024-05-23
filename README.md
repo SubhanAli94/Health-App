@@ -10,7 +10,7 @@ An app for finding doctors and booking appointments.
   * equatable: ^2.0.5
 
 ## Screenshot
-<img alt="screenshot" src="blob/main/screenshots/sc1.jpeg" width="25%" /> <img alt="screenshot" src="/screenShots/sc2.jpeg" width="25%" />
+<img alt="screenshot" src="https://github.com/SubhanAli94/Health-App/blob/main/screenshots/sc1.jpeg" width="25%" /> <img alt="screenshot" src="/screenShots/sc2.jpeg" width="25%" />
 
 ## Learning Credit
 [Youtube](https://www.youtube.com/@MaxonFlutter)
