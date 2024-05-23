@@ -8,7 +8,7 @@ import 'doctor_package.dart';
 import 'doctor_working_hours.dart';
 
 class Doctor extends Equatable {
-  final int id;
+  final String id;
   final String name;
   final String bio;
   final String profileImageUrl;
@@ -51,7 +51,7 @@ class Doctor extends Equatable {
 
   static final sampleDoctors = [
     Doctor(
-      id: 1,
+      id: '1',
       name: 'Dr. John Doe',
       bio:
           'Dr. John Doe is a compassionate psychiatrist focusing on adolescent mental health and trauma recovery. She earned her medical degree from Yale School of Medicine and completed her residency at the University of Michigan. Dr. Khan is acclaimed for her therapeutic approach combining medication management with cognitive-behavioral therapy. She actively participates in mental health awareness campaigns and community outreach programs. Dr. Khan is also an avid reader and enjoys writing poetry.',
@@ -69,7 +69,7 @@ class Doctor extends Equatable {
       patientCount: 500,
     ),
     Doctor(
-      id: 2,
+      id: '2',
       name: 'Dr. Jane Smith',
       bio:
           'Dr. Jane Smith specializes in pediatric care with over 15 years of experience. She is known for her gentle approach with children and her ability to ease parental concerns. Dr. Carter holds a degree from Johns Hopkins University and completed her residency at Boston Children’s Hospital. She is also an advocate for child nutrition and wellness. In her free time, she volunteers at local schools to promote health education.',
@@ -87,7 +87,7 @@ class Doctor extends Equatable {
       patientCount: 300,
     ),
     Doctor(
-      id: 3,
+      id: '3',
       name: 'Dr. Alan Brown',
       bio:
           'Dr. Alan Brown is a renowned cardiologist with a focus on advanced heart disease treatment and prevention. He earned his medical degree from the University of California, San Francisco and completed his fellowship at the Cleveland Clinic. Dr. Mehta is highly regarded for his expertise in minimally invasive procedures. He has published numerous research papers and is actively involved in clinical trials. Outside of his practice, he enjoys hiking and playing classical guitar.',
@@ -105,7 +105,7 @@ class Doctor extends Equatable {
       patientCount: 450,
     ),
     Doctor(
-      id: 4,
+      id: '4',
       name: 'Dr. Emily White',
       bio:
           'Dr. Emily White is a board-certified dermatologist specializing in skin cancer treatment and cosmetic dermatology. She graduated from Harvard Medical School and completed her dermatology residency at Stanford University. Dr. Lin is recognized for her skill in laser treatments and Mohs surgery. She frequently lectures at international dermatology conferences and contributes to medical journals. Dr. Lin is also passionate about art and often incorporates it into her patient care approach.',
@@ -123,10 +123,10 @@ class Doctor extends Equatable {
       patientCount: 350,
     ),
     Doctor(
-      id: 5,
+      id: '5',
       name: 'Dr. Michael Green',
       bio:
-          'Dr. Michael Green is an orthopedic surgeon with a specialization in sports injuries and joint replacement. He received his medical training at Duke University and completed his orthopedic residency at the Mayo Clinic. Dr. O’Connor is known for his precision in arthroscopic surgery and his dedication to patient recovery. He serves as a team physician for several local sports teams and is an advocate for youth sports safety. In his leisure time, he enjoys cycling and coaching soccer.',
+          'Dr. Michael Green is an orthopedic surgeon with a specialization in sports injuries and joint replacement. He received his medical training at Duke University and completed his orthopedic residency at the Mayo Clinic.',
       profileImageUrl:
           'https://assets-global.website-files.com/5e51c674258ffe10d286d30a/5e535b5e8becbf0e0b545ab7_peep-83.png',
       category: DoctorCategory.dentist,
