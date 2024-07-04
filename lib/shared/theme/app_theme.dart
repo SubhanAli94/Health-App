@@ -42,7 +42,7 @@ class AppTheme {
         onError: Color(0xffffffff),
         onInverseSurface: Color(0xfff1f0f4),
         onErrorContainer: Color(0xff410002),
-        primary: Color.fromARGB(255, 2, 48, 80),
+        primary: Color.fromARGB(255, 56, 94, 98),
         onPrimary: Color.fromARGB(255, 230, 231, 238),
         onPrimaryContainer: Color(0xffffffff),
         secondary: Color.fromARGB(255, 249, 145, 85),

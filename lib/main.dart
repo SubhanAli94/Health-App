@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:health_app/repositories/doctor_repository.dart';
+import 'package:health_app/screens/authentication/login_screen.dart';
 import 'package:health_app/screens/home_screen.dart';
 import 'package:health_app/state/home/home_bloc.dart';
 import 'shared/theme/app_theme.dart';
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: const AppTheme().themeData,
-          home: const HomeScreen(),
+          home: const LoginPage(),
         ),
       ),
     );
